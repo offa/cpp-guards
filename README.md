@@ -40,13 +40,15 @@ Utilize RAII to close a socket:
 ```cpp
 #include "guards/ScopeGuard.h"
 
-
-int fd = socket(AF_INET, SOCK_STREAM, 0);
-// Ensure 'fd' is closed in any case
-auto guard = makeScopeGuard([&] { close(fd); });
-
-// ...
-// No need to close manually - RAII will take care of it
+void example()
+{
+    int fd = socket(AF_INET, SOCK_STREAM, 0);
+    // Ensure 'fd' is closed in any case
+    auto guard = makeScopeGuard([&] { close(fd); });
+    
+    // ...
+    // Socket is closed on end of scope
+}
 ```
 
 The socket is closed as `guard` is destructed, eg. out-of-scope or by an exception.
