@@ -1,7 +1,7 @@
 # [Cpp-Guards](https://github.com/offa/cpp-guards)
 
-[![Build Status](https://travis-ci.org/offa/cpp-guards?branch=master)](https://travis-ci.org/offa/cpp-guards)
-[![GitHub release](https://img.shields.io/github/release/offa/cpp-guards)](https://github.com/offa/cpp-guards/releases)
+[![Build Status](https://travis-ci.org/offa/cpp-guards.svg?branch=master)](https://travis-ci.org/offa/cpp-guards)
+[![GitHub release](https://img.shields.io/github/release/offa/cpp-guards.svg)](https://github.com/offa/cpp-guards/releases)
 [![License](https://img.shields.io/badge/license-GPLv3-yellow.svg)](LICENSE)
 
 C++ RAII template classes.
@@ -11,7 +11,7 @@ C++ RAII template classes.
 
 - C++14
 - [**CMake**](http://www.cmake.org/) - for building Tests (*Optional*)
-- [GTest](https://github.com/google/googletest) - testing (*Optional*)
+- [**GTest**](https://github.com/google/googletest) - testing (*Optional*)
 
 
 
