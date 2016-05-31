@@ -12,14 +12,10 @@ find_library(GTest_LIBRARY NAMES gtest
                                 HINTS ${PKG_GTest_LIBDIR}
                                         ${PKG_GTest_LIBRARY_DIRS}
                                 )
-
-get_filename_component(T_ ${GTest_LIBRARY} DIRECTORY)
-
-
 find_library(GTest_Main_LIBRARY NAMES gtest_main
                                 HINTS ${PKG_GTest_LIBDIR}
                                         ${PKG_GTest_LIBRARY_DIRS}
-                                        ${T_}
+                                        ${GTest_LIBRARY}/..
                                 )
 
 
