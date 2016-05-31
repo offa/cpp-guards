@@ -9,10 +9,11 @@ C++ RAII template classes.
 
 ## Requirements
 
-- C++14
+- **C++14** <sup>*)</sup>
 - [**CMake**](http://www.cmake.org/) - for building Tests (*Optional*)
 - [**GTest**](https://github.com/google/googletest) - testing (*Optional*)
 
+_<sup>*) C++11 should work also.</sup>_
 
 
 ## Installtion
