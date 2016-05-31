@@ -49,7 +49,7 @@ matrix:
 
 script:
     - mkdir build && cd build
-    - cmake ..
+    - cmake -DUNITTEST=OFF ..
     - make
 
 
