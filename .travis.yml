@@ -52,4 +52,14 @@ script:
     - cmake -DUNITTEST=OFF ..
     - make
 
+before_install:
+    # Install GTest
+    - export GTEST=googletest
+    - export GTEST_VERSION=master
+    - wget https://github.com/google/googletest/archive/${GTEST}.tar.gz
+    - tar -xzvf *.tar.gz
+    - cd ${GTEST}
+    - mkdir build && cd build
+    - cmake ..
+    - make -j4 && sudo make install && cd ../..
 
