@@ -20,6 +20,7 @@
 
 #include "guards/TransactionGuard.h"
 #include "TestCommon.h"
+#include <memory>
 
 using namespace guards;
 
