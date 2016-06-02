@@ -50,14 +50,15 @@ matrix:
 
 script:
     - mkdir build && cd build
-    - cmake -DUNITTEST=OFF ..
+    - cmake ..
     - make
+    - make unittest
 
 before_install:
     # Install GTest
-    - export GTEST=googletest
     - export GTEST_VERSION=master
-    - wget https://github.com/google/googletest/archive/${GTEST}.tar.gz
+    - export GTEST=googletest-${GTEST_VERSION}
+    - wget https://github.com/google/googletest/archive/${GTEST_VERSION}.tar.gz
     - tar -xzvf *.tar.gz
     - cd ${GTEST}
     - mkdir build && cd build

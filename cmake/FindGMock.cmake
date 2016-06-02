@@ -13,9 +13,6 @@ find_library(GMock_LIBRARY NAMES gmock
                                         ${PKG_GMock_LIBRARY_DIRS}
                                 )
 
-get_filename_component(T_ ${GMock_LIBRARY} DIRECTORY)
-
-
 
 set(GMock_LIBRARIES ${GMock_LIBRARY})
 set(GMock_INCLUDE_DIRS ${GMock_INCLUDE_DIR})
