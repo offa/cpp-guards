@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/offa/cpp-guards.svg?branch=master)](https://travis-ci.org/offa/cpp-guards)
 [![GitHub release](https://img.shields.io/github/release/offa/cpp-guards.svg)](https://github.com/offa/cpp-guards/releases)
 [![License](https://img.shields.io/badge/license-GPLv3-yellow.svg)](LICENSE)
+[![C++](https://img.shields.io/badge/c++-14-green.svg)](https://isocpp.org/)
 
 C++ RAII template classes.
 
