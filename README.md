@@ -31,25 +31,50 @@ make unittest
 It's also possible to use `make test` / `ctest`, this will execute the tests using `ctest`.
 
 
-## Example
+## Examples
 
-Utilize RAII to close a socket:
 
 ```cpp
 #include "guards/ScopeGuard.h"
+#include "guards/TransactionGuard.h"
+#include <iostream>
 
 void example()
+{
+    using namespace guards;
+    auto guard = makeScopeGuard([]{ std::cout << "The End\n"; });
+
+    // ...
+    // 'The End' is printed on guard's destruction
+}
+
+void example2()
+{
+    using namespace guards;
+    auto guard1 = makeTransactionGuard([]{ std::cout << "Guard #1\n"; });
+
+    auto guard2 = makeTransactionGuard([]{ std::cout << "Guard #2\n"; });
+    guard2.commit(); // Disarm
+
+    // ...
+    // Only 'Guard #1' is printed
+}
+
+void example3()
 {
     int fd = socket(AF_INET, SOCK_STREAM, 0);
     // Ensure 'fd' is closed in any case
     auto guard = makeScopeGuard([&] { close(fd); });
-    
+
     // ...
-    // Socket is closed on end of scope
+
+    /*
+     * The socket is closed as `guard` is destructed,
+     * eg. out-of-scope or by an exception.
+     */
 }
 ```
 
-The socket is closed as `guard` is destructed, eg. out-of-scope or by an exception.
 
 
 ## License
