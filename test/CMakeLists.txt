@@ -9,7 +9,7 @@ macro(_add_test _NAME _SRC)
     add_executable(${_NAME} ${_SRC})
     add_test(NAME ${_NAME} COMMAND ${_NAME})
 
-    target_include_directories(${_NAME} PUBLIC
+    target_include_directories(${_NAME} SYSTEM PUBLIC
                                 ${GTest_INCLUDE_DIR}
                                 ${GMock_INCLUDE_DIR}
                                 )
