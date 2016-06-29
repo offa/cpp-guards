@@ -20,7 +20,7 @@ macro(_add_test _NAME _SRC)
 endmacro()
 
 _add_test(ScopeGuardTest ScopeGuardTest.cpp)
-_add_Test(TransactionGuardTest TransactionGuardTest.cpp)
+_add_test(TransactionGuardTest TransactionGuardTest.cpp)
 
 
 add_custom_target(unittest ScopeGuardTest
