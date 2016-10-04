@@ -18,8 +18,7 @@
  * along with Cpp-Guards.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TRANSACTIONGUARD_H
-#define TRANSACTIONGUARD_H
+#pragma once
 
 namespace guards
 {
@@ -66,6 +65,4 @@ namespace guards
     }
 
 }
-
-#endif /* TRANSACTIONGUARD_H */
 

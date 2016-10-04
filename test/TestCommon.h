@@ -18,8 +18,7 @@
  * along with Cpp-Guards.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TESTCOMMON_H
-#define TESTCOMMON_H
+#pragma once
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
@@ -32,7 +31,4 @@ struct ExecutionMock
 {
     MOCK_METHOD0(execute, void());
 };
-
-
-#endif /* TESTCOMMON_H */
 

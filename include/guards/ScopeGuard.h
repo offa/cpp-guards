@@ -18,8 +18,7 @@
  * along with Cpp-Guards.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SCOPEGUARD_H
-#define SCOPEGUARD_H
+#pragma once
 
 namespace guards
 {
@@ -52,6 +51,4 @@ namespace guards
     }
 
 }
-
-#endif /* SCOPEGUARD_H */
 
