@@ -49,7 +49,7 @@ TEST_F(TransactionGuardTest, rollbackOnDestruction)
     {
         auto fn = [&] { rollbackMock->execute(); };
         TransactionGuard<decltype(fn)> guard(fn);
-        UNUSED(guard);
+        unused(guard);
     }
 }
 
@@ -59,7 +59,7 @@ TEST_F(TransactionGuardTest, rollbackIfNoCommit)
 
     {
         auto guard = makeTransactionGuard([&] { rollbackMock->execute(); });
-        UNUSED(guard);
+        unused(guard);
     }
 }
 
@@ -69,7 +69,7 @@ TEST_F(TransactionGuardTest, rollbackIfNoCommitBeforeException)
 
     {
         auto guard = makeTransactionGuard([&] { rollbackMock->execute(); });
-        UNUSED(guard);
+        unused(guard);
         EXPECT_THROW(throw int(3), int);
     }
 }
@@ -109,7 +109,7 @@ TEST_F(TransactionGuardTest, makeTransactionGuard)
 
     {
         auto guard = makeTransactionGuard([&] { rollbackMock->execute(); });
-        UNUSED(guard);
+        unused(guard);
     }
 }
 

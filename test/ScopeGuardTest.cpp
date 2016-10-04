@@ -48,7 +48,7 @@ TEST_F(ScopeGuardTest, functionCalledOnDestruction)
     {
         auto fn = [&] { scopeMock->execute(); };
         ScopeGuard<decltype(fn)> guard(fn);
-        UNUSED(guard);
+        unused(guard);
     }
 }
 
@@ -58,7 +58,7 @@ TEST_F(ScopeGuardTest, functionCalledOnException)
 
     {
         auto guard = makeScopeGuard([&] { scopeMock->execute(); });
-        UNUSED(guard);
+        unused(guard);
         EXPECT_THROW(throw int(3), int);
     }
 }
@@ -69,7 +69,7 @@ TEST_F(ScopeGuardTest, makeScopeGuard)
 
     {
         auto guard = makeScopeGuard([&] { scopeMock->execute(); });
-        UNUSED(guard);
+        unused(guard);
     }
 }
 

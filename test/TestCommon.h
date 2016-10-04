@@ -1,7 +1,7 @@
 /*
  * Cpp-Guards - RAII classes
  * Copyright (C) 2016  offa
- * 
+ *
  * This file is part of Cpp-Guards.
  *
  * Cpp-Guards is free software: you can redistribute it and/or modify
@@ -24,7 +24,8 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#define UNUSED(x)       (void) x
+template<class T>
+constexpr void unused(T&&) { }
 
 
 struct ExecutionMock
