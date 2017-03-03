@@ -1,7 +1,6 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.2)
 
-project(cpp-guards)
-set(PROJECT_VERSION, 0.0.1-dev)
+project(cpp-guards VERSION 0.0.1)
 
 option(UNITTEST "Build unit tests" ON)
 
