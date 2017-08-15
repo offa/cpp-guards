@@ -17,5 +17,6 @@ fi
 
 cmake -DBUILD_GTEST=ON -DINSTALL_GTEST=ON ..
 
-make -j4 && sudo make install && cd ../..
+make -j4 && sudo make install
+cd ../..
 
