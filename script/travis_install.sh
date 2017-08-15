@@ -11,11 +11,11 @@ tar -xzf *.tar.gz
 cd ${GTEST}
 mkdir build && cd build
 
-if [[ "${CXX}" = clang* ]] ; then
-    cmake -DCMAKE_CXX_FLAGS="-stdlib=libc++" ..
-else
-    cmake -DINSTALL_GTEST=ON ..
+if [[ "$CXX" == clang* ]]; then
+    export CXXFLAGS="-stdlib=libc++"
 fi
+
+cmake -DBUILD_GTEST=ON -DINSTALL_GTEST=ON ..
 
 make -j4 && sudo make install && cd ../..
 
