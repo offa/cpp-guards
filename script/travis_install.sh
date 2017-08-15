@@ -14,7 +14,7 @@ mkdir build && cd build
 if [[ "${CXX}" = clang* ]] ; then
     cmake -DCMAKE_CXX_FLAGS="-stdlib=libc++" ..
 else
-    cmake ..
+    cmake -DINSTALL_GTEST=ON ..
 fi
 
 make -j4 && sudo make install && cd ../..
