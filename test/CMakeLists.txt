@@ -5,22 +5,22 @@ find_package(Threads REQUIRED)
 find_package(GTest REQUIRED)
 find_package(GMock REQUIRED)
 
-macro(_add_test _NAME _SRC)
-    add_executable(${_NAME} ${_SRC})
-    add_test(NAME ${_NAME} COMMAND ${_NAME})
+function(add_test_suite name src)
+    add_executable(${name} ${src})
+    add_test(NAME ${name} COMMAND ${name})
 
-    target_include_directories(${_NAME} SYSTEM PUBLIC
+    target_include_directories(${name} SYSTEM PUBLIC
                                 ${GTest_INCLUDE_DIR}
                                 ${GMock_INCLUDE_DIR}
                                 )
-    target_link_libraries(${_NAME} ${GTest_LIBRARIES}
+    target_link_libraries(${name} ${GTest_LIBRARIES}
                                     ${GMock_LIBRARY}
                                     ${CMAKE_THREAD_LIBS_INIT}
                                     )
-endmacro()
+endfunction()
 
-_add_test(ScopeGuardTest ScopeGuardTest.cpp)
-_add_test(TransactionGuardTest TransactionGuardTest.cpp)
+add_test_suite(ScopeGuardTest ScopeGuardTest.cpp)
+add_test_suite(TransactionGuardTest TransactionGuardTest.cpp)
 
 
 add_custom_target(unittest ScopeGuardTest
