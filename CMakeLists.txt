@@ -10,7 +10,13 @@ message(STATUS "~~ ${PROJECT_NAME} ${PROJECT_VERSION} ~~")
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(Cpp14)
 
-add_definitions(-Wall -Wextra -Werror -pedantic -Wshadow)
+add_definitions(-Wall
+                -Wextra
+                -Werror
+                -pedantic
+                -Wshadow
+                -Wold-style-cast
+                )
 
 include_directories("include")
 
