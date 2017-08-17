@@ -15,7 +15,7 @@ if [[ "$CXX" == clang* ]]; then
     export CXXFLAGS="-stdlib=libc++"
 fi
 
-cmake -DBUILD_GTEST=ON ..
+cmake ..
 
 make -j4 && sudo make install
 cd ../..
