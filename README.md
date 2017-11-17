@@ -58,7 +58,7 @@ void example3()
 {
     int fd = socket(AF_INET, SOCK_STREAM, 0);
     // Ensure 'fd' is closed in any case
-    auto guard = makeScopeGuard([&] { close(fd); });
+    auto guard = makeScopeGuard([fd] { close(fd); });
 
     // ...
 
