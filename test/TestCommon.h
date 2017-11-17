@@ -20,8 +20,8 @@
 
 #pragma once
 
-#include <gtest/gtest.h>
-#include <gmock/gmock.h>
+#include <catch.hpp>
+#include <trompeloeil.hpp>
 
 template<class T>
 constexpr void unused(T&&) { }
@@ -29,6 +29,6 @@ constexpr void unused(T&&) { }
 
 struct ExecutionMock
 {
-    MOCK_METHOD0(execute, void());
+    MAKE_MOCK0(execute, void());
 };
 

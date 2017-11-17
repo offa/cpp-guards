@@ -20,96 +20,78 @@
 
 #include "guards/TransactionGuard.h"
 #include "TestCommon.h"
-#include <memory>
 
 using namespace guards;
+using namespace trompeloeil;
 
-class TransactionGuardTest : public testing::Test
+namespace
 {
-protected:
+    ExecutionMock m;
 
-    void SetUp() override
+    void execute()
     {
-        rollbackMock = std::make_unique<ExecutionMock>();
+        m.execute();
     }
-
-    void TearDown() override
-    {
-    }
+}
 
 
-    std::unique_ptr<ExecutionMock> rollbackMock;
-};
-
-
-TEST_F(TransactionGuardTest, rollbackOnDestruction)
+TEST_CASE("rollbackOnDestruction", "[TransactionGuard]")
 {
-    EXPECT_CALL(*rollbackMock, execute()).Times(1);
+    REQUIRE_CALL(m, execute());
 
     {
-        auto fn = [&] { rollbackMock->execute(); };
-        TransactionGuard<decltype(fn)> guard(fn);
+        auto guard = makeTransactionGuard(execute);
         unused(guard);
     }
 }
 
-TEST_F(TransactionGuardTest, rollbackIfNoCommit)
+TEST_CASE("rollback if not commited", "[TransactionGuard]")
 {
-    EXPECT_CALL(*rollbackMock, execute()).Times(1);
+    REQUIRE_CALL(m, execute());
 
     {
-        auto guard = makeTransactionGuard([&] { rollbackMock->execute(); });
+        auto guard = makeTransactionGuard(execute);
         unused(guard);
     }
 }
 
-TEST_F(TransactionGuardTest, rollbackIfNoCommitBeforeException)
+TEST_CASE("rollback if not commited before exception", "[TransactionGuard]")
 {
-    EXPECT_CALL(*rollbackMock, execute()).Times(1);
+    REQUIRE_CALL(m, execute());
 
     {
-        auto guard = makeTransactionGuard([&] { rollbackMock->execute(); });
+        auto guard = makeTransactionGuard(execute);
         unused(guard);
-        EXPECT_THROW(throw int(3), int);
+        REQUIRE_THROWS(throw int{3});
     }
 }
 
-TEST_F(TransactionGuardTest, noRollbackIfCommit)
+TEST_CASE("no rollback if commited", "[TransactionGuard]")
 {
-    EXPECT_CALL(*rollbackMock, execute()).Times(0);
+    REQUIRE_CALL(m, execute()).TIMES(0);
 
     {
-        auto guard = makeTransactionGuard([&] { rollbackMock->execute(); });
+        auto guard = makeTransactionGuard(execute);
         guard.commit();
     }
 }
 
-TEST_F(TransactionGuardTest, noRollbackIfCommitBeforeException)
+TEST_CASE("no rollback if commited before exception", "[TransactionGuard]")
 {
-    EXPECT_CALL(*rollbackMock, execute()).Times(0);
+    REQUIRE_CALL(m, execute()).TIMES(0);
 
     {
-        auto guard = makeTransactionGuard([&] { rollbackMock->execute(); });
+        auto guard = makeTransactionGuard(execute);
         guard.commit();
-        EXPECT_THROW(throw int(3), int);
+        REQUIRE_THROWS(throw int{3});
     }
 }
 
-TEST_F(TransactionGuardTest, commitSetsStae)
+TEST_CASE("commit sets state", "[TransactionGuard]")
 {
-    auto guard = makeTransactionGuard([&] { rollbackMock->execute(); });
-    EXPECT_FALSE(guard.isCommited());
+    auto guard = makeTransactionGuard(execute);
+    CHECK_FALSE(guard.isCommited());
     guard.commit();
-    EXPECT_TRUE(guard.isCommited());
-}
-
-TEST_F(TransactionGuardTest, makeTransactionGuard)
-{
-    EXPECT_CALL(*rollbackMock, execute()).Times(1);
-
-    {
-        auto guard = makeTransactionGuard([&] { rollbackMock->execute(); });
-        unused(guard);
-    }
+    CHECK(guard.isCommited());
 }
 

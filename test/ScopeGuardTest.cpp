@@ -20,56 +20,39 @@
 
 #include "guards/ScopeGuard.h"
 #include "TestCommon.h"
-#include <memory>
 
 using namespace guards;
+using namespace trompeloeil;
 
-class ScopeGuardTest : public testing::Test
+namespace
 {
-protected:
+    ExecutionMock m;
 
-    void SetUp() override
+    void execute()
     {
-        scopeMock = std::make_unique<ExecutionMock>();
+        m.execute();
     }
-
-    void TearDown() override
-    {
-    }
+}
 
 
-    std::unique_ptr<ExecutionMock> scopeMock;
-};
-
-TEST_F(ScopeGuardTest, functionCalledOnDestruction)
+TEST_CASE("function called on destruction", "[ScopeGuard]")
 {
-    EXPECT_CALL(*scopeMock, execute()).Times(1);
+    REQUIRE_CALL(m, execute());
 
     {
-        auto fn = [&] { scopeMock->execute(); };
-        ScopeGuard<decltype(fn)> guard(fn);
+        auto guard = makeScopeGuard(execute);
         unused(guard);
     }
 }
 
-TEST_F(ScopeGuardTest, functionCalledOnException)
+TEST_CASE("function called on exception", "[ScopeGuard]")
 {
-    EXPECT_CALL(*scopeMock, execute()).Times(1);
+    REQUIRE_CALL(m, execute());
 
     {
-        auto guard = makeScopeGuard([&] { scopeMock->execute(); });
+        auto guard = makeScopeGuard(execute);
         unused(guard);
-        EXPECT_THROW(throw int(3), int);
-    }
-}
-
-TEST_F(ScopeGuardTest, makeScopeGuard)
-{
-    EXPECT_CALL(*scopeMock, execute()).Times(1);
-
-    {
-        auto guard = makeScopeGuard([&] { scopeMock->execute(); });
-        unused(guard);
+        REQUIRE_THROWS(throw int{3});
     }
 }
 
