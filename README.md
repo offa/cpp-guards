@@ -31,6 +31,7 @@ It's also possible to use `make test` / `ctest`, this will execute the tests usi
 ```cpp
 #include "guards/Guards.h"
 #include <iostream>
+#include <sys/socket.h>
 
 void example()
 {
@@ -57,7 +58,7 @@ void example3()
 {
     int fd = socket(AF_INET, SOCK_STREAM, 0);
     // Ensure 'fd' is closed in any case
-    auto guard = makeScopeGuard([fd] { close(fd); });
+    auto guard = makeScopeGuard([&fd] { close(fd); });
 
     // ...
 
