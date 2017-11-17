@@ -10,8 +10,7 @@ C++ RAII template classes.
 
 ## Requirements
 
-- [**CMake**](http://www.cmake.org/) - for building Tests (*Optional*)
-- [**GTest**](https://github.com/google/googletest) - testing (*Optional*)
+- [**CMake**](http://www.cmake.org/)
 
 
 ## Testing
