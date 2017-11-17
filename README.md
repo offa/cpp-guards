@@ -14,11 +14,6 @@ C++ RAII template classes.
 - [**GTest**](https://github.com/google/googletest) - testing (*Optional*)
 
 
-## Installtion
-
-Header only - no compilation / installation is required.
-
-
 ## Testing
 
 ```
