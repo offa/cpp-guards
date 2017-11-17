@@ -2,12 +2,21 @@ cmake_minimum_required(VERSION 3.2)
 
 project(cpp-guards VERSION 0.0.2)
 
-option(UNITTEST "Build unit tests" ON)
-
-
 message(STATUS "~~ ${PROJECT_NAME} ${PROJECT_VERSION} ~~")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+
+option(UNITTEST "Build unit tests" ON)
+message(STATUS "Unit Tests : ${UNITTEST}")
+
+if( CMAKE_BUILD_TYPE )
+    message(STATUS "Build Type : ${CMAKE_BUILD_TYPE}")
+else()
+    message(STATUS "Build Type : None")
+endif()
+
+
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
