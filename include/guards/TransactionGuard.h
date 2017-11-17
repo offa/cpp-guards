@@ -30,12 +30,12 @@ namespace guards
     {
     public:
 
-        explicit TransactionGuard(Function&& rollback) : m_rollback(std::move_if_noexcept(rollback)),
+        explicit TransactionGuard(Function&& rollback) noexcept : m_rollback(std::move_if_noexcept(rollback)),
                                                     m_commited(false)
         {
         }
 
-        ~TransactionGuard()
+        ~TransactionGuard() noexcept
         {
             if( m_commited == false )
             {
@@ -43,12 +43,12 @@ namespace guards
             }
         }
 
-        void commit()
+        void commit() noexcept
         {
             m_commited = true;
         }
 
-        bool isCommited() const
+        bool isCommited() const noexcept
         {
             return m_commited;
         }

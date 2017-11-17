@@ -30,11 +30,11 @@ namespace guards
     {
     public:
 
-        explicit ScopeGuard(Function&& fn) : m_function(std::move_if_noexcept(fn))
+        explicit ScopeGuard(Function&& fn) noexcept : m_function(std::move_if_noexcept(fn))
         {
         }
 
-        ~ScopeGuard()
+        ~ScopeGuard() noexcept
         {
             m_function();
         }
