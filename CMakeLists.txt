@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9.4)
 
-project(cpp-guards VERSION 0.0.2)
+project(cpp-guards VERSION 0.1.0)
 
 message(STATUS "~~ ${PROJECT_NAME} ${PROJECT_VERSION} ~~")
 
