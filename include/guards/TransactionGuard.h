@@ -30,7 +30,8 @@ namespace guards
     {
     public:
 
-        explicit TransactionGuard(Function rollback) : m_rollback(rollback), m_commited(false)
+        explicit TransactionGuard(Function&& rollback) : m_rollback(std::move_if_noexcept(rollback)),
+                                                    m_commited(false)
         {
         }
 
@@ -61,7 +62,7 @@ namespace guards
 
 
     template<class Function>
-    constexpr TransactionGuard<Function> makeTransactionGuard(Function rollback)
+    constexpr TransactionGuard<Function> makeTransactionGuard(Function&& rollback) noexcept
     {
         return TransactionGuard<Function>(std::forward<Function>(rollback));
     }

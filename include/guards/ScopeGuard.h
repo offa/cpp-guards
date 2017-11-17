@@ -30,7 +30,7 @@ namespace guards
     {
     public:
 
-        explicit ScopeGuard(Function fn) : m_function(fn)
+        explicit ScopeGuard(Function&& fn) : m_function(std::move_if_noexcept(fn))
         {
         }
 
@@ -47,7 +47,7 @@ namespace guards
 
 
     template<class Function>
-    constexpr ScopeGuard<Function> makeScopeGuard(Function fn)
+    constexpr ScopeGuard<Function> makeScopeGuard(Function&& fn) noexcept
     {
         return ScopeGuard<Function>(std::forward<Function>(fn));
     }
