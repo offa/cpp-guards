@@ -32,3 +32,6 @@ if( UNITTEST )
     enable_testing()
     subdirs(test)
 endif()
+
+
+include(Install)
