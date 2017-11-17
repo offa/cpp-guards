@@ -29,8 +29,7 @@ It's also possible to use `make test` / `ctest`, this will execute the tests usi
 
 
 ```cpp
-#include "guards/ScopeGuard.h"
-#include "guards/TransactionGuard.h"
+#include "guards/Guards.h"
 #include <iostream>
 
 void example()
