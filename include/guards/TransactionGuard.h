@@ -20,6 +20,8 @@
 
 #pragma once
 
+#include <utility>
+
 namespace guards
 {
 
@@ -53,7 +55,7 @@ namespace guards
 
     private:
 
-        const Function m_rollback;
+        Function m_rollback;
         bool m_commited;
     };
 
@@ -61,7 +63,7 @@ namespace guards
     template<class Function>
     constexpr TransactionGuard<Function> makeTransactionGuard(Function rollback)
     {
-        return TransactionGuard<Function>(rollback);
+        return TransactionGuard<Function>(std::forward<Function>(rollback));
     }
 
 }

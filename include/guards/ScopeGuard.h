@@ -20,6 +20,8 @@
 
 #pragma once
 
+#include <utility>
+
 namespace guards
 {
 
@@ -40,14 +42,14 @@ namespace guards
 
     private:
 
-        const Function m_function;
+        Function m_function;
     };
 
 
     template<class Function>
     constexpr ScopeGuard<Function> makeScopeGuard(Function fn)
     {
-        return ScopeGuard<Function>(fn);
+        return ScopeGuard<Function>(std::forward<Function>(fn));
     }
 
 }
