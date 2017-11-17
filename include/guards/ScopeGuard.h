@@ -34,10 +34,17 @@ namespace guards
         {
         }
 
+        ScopeGuard(ScopeGuard&&) noexcept = default;
+        ScopeGuard(const ScopeGuard&) = delete;
+
         ~ScopeGuard() noexcept
         {
             m_function();
         }
+
+
+        ScopeGuard& operator=(ScopeGuard&&) = delete;
+        ScopeGuard& operator=(const ScopeGuard&) = delete;
 
 
     private:

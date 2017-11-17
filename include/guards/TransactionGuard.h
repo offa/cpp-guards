@@ -35,6 +35,9 @@ namespace guards
         {
         }
 
+        TransactionGuard(TransactionGuard&&) noexcept = default;
+        TransactionGuard(const TransactionGuard&) = delete;
+
         ~TransactionGuard() noexcept
         {
             if( m_commited == false )
@@ -42,6 +45,7 @@ namespace guards
                 m_rollback();
             }
         }
+
 
         void commit() noexcept
         {
@@ -52,6 +56,10 @@ namespace guards
         {
             return m_commited;
         }
+
+
+        TransactionGuard& operator=(TransactionGuard&&) = delete;
+        TransactionGuard& operator=(const TransactionGuard&) = delete;
 
 
     private:
