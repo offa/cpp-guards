@@ -21,7 +21,11 @@ add_compile_options(-Wall
                     -Wold-style-cast
                     )
 
-include_directories("include")
+add_library(guards INTERFACE)
+target_include_directories(guards INTERFACE
+                       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                       $<INSTALL_INTERFACE:include>
+                       )
 
 
 if( UNITTEST )
