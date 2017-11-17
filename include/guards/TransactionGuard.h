@@ -72,7 +72,7 @@ namespace guards
     template<class Function>
     constexpr TransactionGuard<Function> makeTransactionGuard(Function&& rollback) noexcept
     {
-        return TransactionGuard<Function>(std::forward<Function>(rollback));
+        return TransactionGuard<Function>{std::forward<Function>(rollback)};
     }
 
 }

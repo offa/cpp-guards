@@ -56,7 +56,7 @@ namespace guards
     template<class Function>
     constexpr ScopeGuard<Function> makeScopeGuard(Function&& fn) noexcept
     {
-        return ScopeGuard<Function>(std::forward<Function>(fn));
+        return ScopeGuard<Function>{std::forward<Function>(fn)};
     }
 
 }
