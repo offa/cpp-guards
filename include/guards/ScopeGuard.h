@@ -24,7 +24,7 @@ namespace guards
 {
 
     template<class Function>
-    class ScopeGuard final
+    class ScopeGuard
     {
     public:
 

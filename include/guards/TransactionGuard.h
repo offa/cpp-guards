@@ -24,7 +24,7 @@ namespace guards
 {
 
     template<class Function>
-    class TransactionGuard final
+    class TransactionGuard
     {
     public:
 
