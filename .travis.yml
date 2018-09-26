@@ -18,7 +18,6 @@ matrix:
     - env: COMPILER=gcc-6
     - env: COMPILER=clang-6
     - env: COMPILER=clang-5
-    - env: COMPILER=clang-4
 
 
 before_install:
