@@ -1,6 +1,6 @@
 /*
  * Cpp-Guards - RAII classes
- * Copyright (C) 2016-2018  offa
+ * Copyright (C) 2016-2019  offa
  *
  * This file is part of Cpp-Guards.
  *
