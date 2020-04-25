@@ -12,10 +12,12 @@ env:
 
 matrix:
     include:
+    - env: COMPILER=gcc-10
     - env: COMPILER=gcc-9
     - env: COMPILER=gcc-8
     - env: COMPILER=gcc-7
     - env: COMPILER=gcc-6
+    - env: COMPILER=clang-10
     - env: COMPILER=clang-9
     - env: COMPILER=clang-8
     - env: COMPILER=clang-7
@@ -29,4 +31,3 @@ before_install:
 
 script:
   - docker run --cap-add SYS_PTRACE -v ${PWD}:/mnt -it ${DOCKER_IMG}/${COMPILER} /bin/bash -c "cd /mnt; script/ci_build.sh"
-
