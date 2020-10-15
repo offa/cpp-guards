@@ -7,6 +7,7 @@
 
 C++ RAII template classes.
 
+**Please visit [scope-guard](https://github.com/offa/scope-guard) for a more advanced version.**
 
 ## Requirements
 
@@ -87,5 +88,3 @@ void example3()
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
