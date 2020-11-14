@@ -1,5 +1,6 @@
 # [Cpp-Guards](https://github.com/offa/cpp-guards)
 
+[![CI](https://github.com/offa/cpp-guards/workflows/ci/badge.svg)](https://github.com/offa/cpp-guards/actions)
 [![Build Status](https://travis-ci.org/offa/cpp-guards.svg?branch=master)](https://travis-ci.org/offa/cpp-guards)
 [![GitHub release](https://img.shields.io/github/release/offa/cpp-guards.svg)](https://github.com/offa/cpp-guards/releases)
 [![License](https://img.shields.io/badge/license-GPLv3-yellow.svg)](LICENSE)
